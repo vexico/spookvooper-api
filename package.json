@@ -12,17 +12,17 @@
     "url": "https://git.imbl.me/btech/spookvooper-api-libraries.git"
   },
   "keywords": [
-    "spookvooper"
+    "spookvooper",
+    "api",
+    "library"
   ],
   "author": "bTech",
   "license": "SEE LICENSE IN LICENSE",
   "devDependencies": {
-    "eslint": "^7.7.0",
-    "prettier": "2.1.1"
+    "eslint": "^7.9.0",
+    "prettier": "^2.1.1"
   },
   "dependencies": {
-    "axios": "^0.20.0",
-    "node-fetch": "^2.6.0",
-    "puppeteer": "^5.2.1"
+    "axios": "^0.20.0"
   }
 }
