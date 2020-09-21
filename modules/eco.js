@@ -337,6 +337,29 @@ function getDistrictGroupWealth(id, errToConsole) {
     });
 }
 
+/**
+ * @function getOwnerData
+ * @param {string} ticker The stock ticker you want to query
+ * @param {boolean} errToConsole If there is an error, send it to console, instead of returning. Defaults to false
+ * @returns {string} The data from the HTTP GET request, but because of the way it's handled, will always be a string (should be a JSON Object).
+ * @author Brendan Lane <me@imbl.me>
+ */
+function getOwnerData(ticker, errToConsole) {
+    return new Promise((resolve, reject) => {
+        axios.get(`${baseURL}/getOwnerData?ticker=${ticker}`)
+            .then(function (response) {
+                resolve(response.data);
+            })
+            .catch(function (error) {
+                if (errToConsole) {
+                    console.warn(error);
+                } else {
+                    reject(error);
+                }
+            });
+    });
+}
+
 export default {
     getBalance,
     sendTransactionByIDs,
@@ -350,5 +373,6 @@ export default {
     getUserStockOffers,
     getDistrictWealth,
     getDistrictUserWealth,
-    getDistrictGroupWealth
+    getDistrictGroupWealth,
+    getOwnerData
 };

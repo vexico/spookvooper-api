@@ -3,8 +3,9 @@
 
 /** @module modules/premade */
 import user from "./user.js";
+import eco from "./eco.js";
 
-let UserResponse;
+let StockOwnerAmount;
 
 /**
  * Gets the total XP of a user
@@ -20,6 +21,22 @@ function getTotalXP(svid) {
     });
 }
 
+/**
+ * Gets the name of the stock owner and the amount they own.
+ * @function getStockOwner
+ * @param {string} ticker The ticker you want to lookup.
+ * @returns {string} The data from the HTTP GET request, but because of the way it's handled, will always be a string (should be an Object).
+ */
+function getStockOwner(ticker) {
+    return new Promise((resolve) => {
+        eco.getOwnerData(ticker, true).then(value => {
+            StockOwnerAmount = value.length - 1;
+            resolve({ name: `${value[StockOwnerAmount].ownerName}`, amount: value[StockOwnerAmount].amount });
+        })
+    })
+}
+
 export default {
-    getTotalXP
+    getTotalXP,
+    getStockOwner
 };
