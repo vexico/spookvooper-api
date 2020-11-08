@@ -36,7 +36,7 @@ function getBalance(svid, errToConsole) {
  * @param {string} to The svid of the user/group you want to send the payment to
  * @param {string} from The svid of the user/group you want to send the payment from
  * @param {string} amount The amount of money to be sent
- * @param {string} auth An api key which has permission to use funds from the sender
+ * @param {string} auth An api key which has permission to use funds from the sender or use oauthkey|app_secret formula for Oauth2.
  * @param {string} detail A short detail of why the payment happened. Must include "sale" if it was a sale.
  * @param {boolean} errToConsole If there is an error, send it to console, instead of returning. Defaults to false
  * @returns {string} The data from the HTTP GET request, but because of the way it's handled, will always be a string (should be a string).
@@ -116,7 +116,7 @@ function getStockHistory(ticker, type, count, interval, errToConsole) {
  * @param {string} count How many stocks you want to purchase
  * @param {string} price How much you want to pay for each stock
  * @param {string} accountid The SVID of the account (user or group) you'd like to purchase from.
- * @param {string} auth API Key that has authentication to use the account specified in accountid.
+ * @param {string} auth API Key that has authentication to use the account specified in accountid or use oauthkey|app_secret formula for Oauth2.
  * @param {boolean} errToConsole If there is an error, send it to console, instead of returning. Defaults to false
  * @returns {string} The data from the HTTP GET request, but because of the way it's handled, will always be a string (should be a tesult).
  * @author Brendan Lane <me@imbl.me>
@@ -144,7 +144,7 @@ function submitStockBuy(ticker, count, price, accountid, auth, errToConsole) {
  * @param {string} count How many stocks you want to sell
  * @param {string} price How much you want to sell each stock for 
  * @param {string} accountid The SVID of the account (user or group) you'd like to sell from.
- * @param {string} auth API Key that has authentication to use the account specified in accountid.
+ * @param {string} auth API Key that has authentication to use the account specified in accountid or use oauthkey|app_secret formula for Oauth2.
  * @param {boolean} errToConsole If there is an error, send it to console, instead of returning. Defaults to false
  * @returns {string} The data from the HTTP GET request, but because of the way it's handled, will always be a string (should be a result).
  * @author Brendan Lane <me@imbl.me>
@@ -170,7 +170,7 @@ function submitStockSell(ticker, count, price, accountid, auth, errToConsole) {
  * @function cancelOrder
  * @param {string} orderid The ID of the order you'd like to cancel.
  * @param {string} accountid The SVID of the account (user or group) you'd like to purchase from.
- * @param {string} auth API Key that has authentication to use the account specified in accountid.
+ * @param {string} auth API Key that has authentication to use the account specified in accountid or use oauthkey|app_secret formula for Oauth2.
  * @param {boolean} errToConsole If there is an error, send it to console, instead of returning. Defaults to false
  * @returns {string} The data from the HTTP GET request, but because of the way it's handled, will always be a string (should be a result).
  * @author Brendan Lane <me@imbl.me>

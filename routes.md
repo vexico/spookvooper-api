@@ -56,6 +56,8 @@ You can register apps at: <https://spookvooper.com/oauth2>
 
 ### What are the scopes
 
-Currently, the only scope is View. This will be extended to eco/plot/etc in the future.
+All scopes are now supported! Separate them with commas. The simplest scope is "view", which just gives you the id of the account. Also useful is "eco".
 
-This is currently new and may have bugs. Try not to bug me without specific issues.
+### How do I use the key?
+
+Instead of an API key, format a key as "oauthkey|app_secret". SV will automatically split the two.

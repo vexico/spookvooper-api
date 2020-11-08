@@ -13,7 +13,7 @@ let urlReturn;
  * @param {string} response_type The type of response you get back. Currently the only one that is supported is "code". This parameter is requried.
  * @param {string} client_id The client ID of your Oauth2 app. To get your client ID, go to https://spookvooper.com/oauth2. This parameter is requried.
  * @param {string} redirect_uri Where to redirect to once authorization has been granted. Will return a "code" and "state" parameter if successful. This parameter is requried.
- * @param {string} scope The scope of what you want to be able to receive. Currently the only supported scope is "view". This parameter is requried.
+ * @param {string} scope The scope of what you want to be able to receive. All scopes are allowed. This parameter is requried.
  * @param {string} state The state parameter can have anything here. Will be returned to the server upon completion. This parameter is optional.
  * @returns {string} Will return a string containing a link to the Oauth2 authorization page. If there is an error, it will return "ERROR: Oauth2 URL Builder - A required variable is undefined or is missing."
  */
