@@ -2,9 +2,9 @@
 // Written by Brendan Lane
 
 /** @module modules/user */
-import axios from "axios";
+import axios from 'axios'
 
-let baseURL = "https://api.spookvooper.com/user";
+const baseURL = 'https://api.spookvooper.com/user'
 
 /**
  * Gets information on the user
@@ -14,20 +14,20 @@ let baseURL = "https://api.spookvooper.com/user";
  * @returns {string} The data from the HTTP GET request, but because of the way it's handled, will always be a string (should be a JSON object).
  * @author Brendan Lane <me@imbl.me>
  */
-function getUser(svid, errToConsole) {
-    return new Promise((resolve, reject) => {
-        axios.get(`${baseURL}/getUser?svid=${svid}`)
-            .then(function (response) {
-                resolve(response.data);
-            })
-            .catch(function (error) {
-                if (errToConsole) {
-                    console.warn(error);
-                } else {
-                    reject(error);
-                }
-            });
-    });
+function getUser (svid, errToConsole) {
+  return new Promise((resolve, reject) => {
+    axios.get(`${baseURL}/getUser?svid=${svid}`)
+      .then(function (response) {
+        resolve(response.data)
+      })
+      .catch(function (error) {
+        if (errToConsole) {
+          console.warn(error)
+        } else {
+          reject(error)
+        }
+      })
+  })
 }
 
 /**
@@ -38,20 +38,20 @@ function getUser(svid, errToConsole) {
  * @returns {string} The data from the HTTP GET request, but because of the way it's handled, will always be a string (should be a string).
  * @author Brendan Lane <me@imbl.me>
  */
-function getUsername(svid, errToConsole) {
-    return new Promise((resolve, reject) => {
-        axios.get(`${baseURL}/getUsername?svid=${svid}`)
-            .then(function (response) {
-                resolve(response.data);
-            })
-            .catch(function (error) {
-                if (errToConsole) {
-                    console.warn(error);
-                } else {
-                    reject(error);
-                }
-            });
-    });
+function getUsername (svid, errToConsole) {
+  return new Promise((resolve, reject) => {
+    axios.get(`${baseURL}/getUsername?svid=${svid}`)
+      .then(function (response) {
+        resolve(response.data)
+      })
+      .catch(function (error) {
+        if (errToConsole) {
+          console.warn(error)
+        } else {
+          reject(error)
+        }
+      })
+  })
 }
 
 /**
@@ -62,20 +62,20 @@ function getUsername(svid, errToConsole) {
  * @returns {string} The data from the HTTP GET request, but because of the way it's handled, will always be a string (should be a string).
  * @author Brendan Lane <me@imbl.me>
  */
-function getSvidFromUsername(username, errToConsole) {
-    return new Promise((resolve, reject) => {
-        axios.get(`${baseURL}/getSvidFromUsername?username=${username}`)
-            .then(function (response) {
-                resolve(response.data);
-            })
-            .catch(function (error) {
-                if (errToConsole) {
-                    console.warn(error);
-                } else {
-                    reject(error);
-                }
-            });
-    });
+function getSvidFromUsername (username, errToConsole) {
+  return new Promise((resolve, reject) => {
+    axios.get(`${baseURL}/getSvidFromUsername?username=${username}`)
+      .then(function (response) {
+        resolve(response.data)
+      })
+      .catch(function (error) {
+        if (errToConsole) {
+          console.warn(error)
+        } else {
+          reject(error)
+        }
+      })
+  })
 }
 
 /**
@@ -86,20 +86,20 @@ function getSvidFromUsername(username, errToConsole) {
  * @returns {string} The data from the HTTP GET request, but because of the way it's handled, will always be a string (should be a string).
  * @author Brendan Lane <me@imbl.me>
  */
-function getUsernameFromDiscord(discordid, errToConsole) {
-    return new Promise((resolve, reject) => {
-        axios.get(`${baseURL}/getUsernameFromDiscord?discordid=${discordid}`)
-            .then(function (response) {
-                resolve(response.data);
-            })
-            .catch(function (error) {
-                if (errToConsole) {
-                    console.warn(error);
-                } else {
-                    reject(error);
-                }
-            });
-    });
+function getUsernameFromDiscord (discordid, errToConsole) {
+  return new Promise((resolve, reject) => {
+    axios.get(`${baseURL}/getUsernameFromDiscord?discordid=${discordid}`)
+      .then(function (response) {
+        resolve(response.data)
+      })
+      .catch(function (error) {
+        if (errToConsole) {
+          console.warn(error)
+        } else {
+          reject(error)
+        }
+      })
+  })
 }
 
 /**
@@ -110,20 +110,20 @@ function getUsernameFromDiscord(discordid, errToConsole) {
  * @returns {string} The data from the HTTP GET request, but because of the way it's handled, will always be a string (should be a string).
  * @author Brendan Lane <me@imbl.me>
  */
-function getSvidFromDiscord(discordid, errToConsole) {
-    return new Promise((resolve, reject) => {
-        axios.get(`${baseURL}/getSvidFromDiscord?discordid=${discordid}`)
-            .then(function (response) {
-                resolve(response.data);
-            })
-            .catch(function (error) {
-                if (errToConsole) {
-                    console.warn(error);
-                } else {
-                    reject(error);
-                }
-            });
-    });
+function getSvidFromDiscord (discordid, errToConsole) {
+  return new Promise((resolve, reject) => {
+    axios.get(`${baseURL}/getSvidFromDiscord?discordid=${discordid}`)
+      .then(function (response) {
+        resolve(response.data)
+      })
+      .catch(function (error) {
+        if (errToConsole) {
+          console.warn(error)
+        } else {
+          reject(error)
+        }
+      })
+  })
 }
 
 /**
@@ -134,20 +134,20 @@ function getSvidFromDiscord(discordid, errToConsole) {
  * @returns {string} The data from the HTTP GET request, but because of the way it's handled, will always be a string (should be a string).
  * @author Brendan Lane <me@imbl.me>
  */
-function getUsernameFromMinecraft(minecraftid, errToConsole) {
-    return new Promise((resolve, reject) => {
-        axios.get(`${baseURL}/getUsernameFromMinecraft?minecraftid=${minecraftid}`)
-            .then(function (response) {
-                resolve(response.data);
-            })
-            .catch(function (error) {
-                if (errToConsole) {
-                    console.warn(error);
-                } else {
-                    reject(error);
-                }
-            });
-    });
+function getUsernameFromMinecraft (minecraftid, errToConsole) {
+  return new Promise((resolve, reject) => {
+    axios.get(`${baseURL}/getUsernameFromMinecraft?minecraftid=${minecraftid}`)
+      .then(function (response) {
+        resolve(response.data)
+      })
+      .catch(function (error) {
+        if (errToConsole) {
+          console.warn(error)
+        } else {
+          reject(error)
+        }
+      })
+  })
 }
 
 /**
@@ -158,20 +158,20 @@ function getUsernameFromMinecraft(minecraftid, errToConsole) {
  * @returns {string} The data from the HTTP GET request, but because of the way it's handled, will always be a string (should be a string).
  * @author Brendan Lane <me@imbl.me>
  */
-function getSvidFromMinecraft(minecraftid, errToConsole) {
-    return new Promise((resolve, reject) => {
-        axios.get(`${baseURL}/getSvidFromMinecraft?minecraftid=${minecraftid}`)
-            .then(function (response) {
-                resolve(response.data);
-            })
-            .catch(function (error) {
-                if (errToConsole) {
-                    console.warn(error);
-                } else {
-                    reject(error);
-                }
-            });
-    });
+function getSvidFromMinecraft (minecraftid, errToConsole) {
+  return new Promise((resolve, reject) => {
+    axios.get(`${baseURL}/getSvidFromMinecraft?minecraftid=${minecraftid}`)
+      .then(function (response) {
+        resolve(response.data)
+      })
+      .catch(function (error) {
+        if (errToConsole) {
+          console.warn(error)
+        } else {
+          reject(error)
+        }
+      })
+  })
 }
 
 /**
@@ -183,20 +183,20 @@ function getSvidFromMinecraft(minecraftid, errToConsole) {
  * @returns {string} The data from the HTTP GET request, but because of the way it's handled, will always be a string (should be a boolean).
  * @author Brendan Lane <me@imbl.me>
  */
-function hasDiscordRole(userid, role, errToConsole) {
-    return new Promise((resolve, reject) => {
-        axios.get(`${baseURL}/hasDiscordRole?userid=${userid}&role=${role}`)
-            .then(function (response) {
-                resolve(response.data);
-            })
-            .catch(function (error) {
-                if (errToConsole) {
-                    console.warn(error);
-                } else {
-                    reject(error);
-                }
-            });
-    });
+function hasDiscordRole (userid, role, errToConsole) {
+  return new Promise((resolve, reject) => {
+    axios.get(`${baseURL}/hasDiscordRole?userid=${userid}&role=${role}`)
+      .then(function (response) {
+        resolve(response.data)
+      })
+      .catch(function (error) {
+        if (errToConsole) {
+          console.warn(error)
+        } else {
+          reject(error)
+        }
+      })
+  })
 }
 
 /**
@@ -207,20 +207,20 @@ function hasDiscordRole(userid, role, errToConsole) {
  * @returns {string} The data from the HTTP GET request, but because of the way it's handled, will always be a string (should be a JSON Object).
  * @author Brendan Lane <me@imbl.me>
  */
-function getDiscordRoles(svid, errToConsole) {
-    return new Promise((resolve, reject) => {
-        axios.get(`${baseURL}/getDiscordRoles?svid=${svid}`)
-            .then(function (response) {
-                resolve(response.data);
-            })
-            .catch(function (error) {
-                if (errToConsole) {
-                    console.warn(error);
-                } else {
-                    reject(error);
-                }
-            });
-    });
+function getDiscordRoles (svid, errToConsole) {
+  return new Promise((resolve, reject) => {
+    axios.get(`${baseURL}/getDiscordRoles?svid=${svid}`)
+      .then(function (response) {
+        resolve(response.data)
+      })
+      .catch(function (error) {
+        if (errToConsole) {
+          console.warn(error)
+        } else {
+          reject(error)
+        }
+      })
+  })
 }
 
 /**
@@ -231,31 +231,31 @@ function getDiscordRoles(svid, errToConsole) {
  * @returns {string} The data from the HTTP GET request, but because of the way it's handled, will always be a string (should be a integer).
  * @author Brendan Lane <me@imbl.me>
  */
-function getDaysSinceLastMove(svid, errToConsole) {
-    return new Promise((resolve, reject) => {
-        axios.get(`${baseURL}/getDaysSinceLastMove?svid=${svid}`)
-            .then(function (response) {
-                resolve(response.data);
-            })
-            .catch(function (error) {
-                if (errToConsole) {
-                    console.warn(error);
-                } else {
-                    reject(error);
-                }
-            });
-    });
+function getDaysSinceLastMove (svid, errToConsole) {
+  return new Promise((resolve, reject) => {
+    axios.get(`${baseURL}/getDaysSinceLastMove?svid=${svid}`)
+      .then(function (response) {
+        resolve(response.data)
+      })
+      .catch(function (error) {
+        if (errToConsole) {
+          console.warn(error)
+        } else {
+          reject(error)
+        }
+      })
+  })
 }
 
 export default {
-    getUser,
-    getUsername,
-    getSvidFromUsername,
-    getUsernameFromDiscord,
-    getSvidFromDiscord,
-    getUsernameFromMinecraft,
-    getSvidFromMinecraft,
-    hasDiscordRole,
-    getDiscordRoles,
-    getDaysSinceLastMove
-};
+  getUser,
+  getUsername,
+  getSvidFromUsername,
+  getUsernameFromDiscord,
+  getSvidFromDiscord,
+  getUsernameFromMinecraft,
+  getSvidFromMinecraft,
+  hasDiscordRole,
+  getDiscordRoles,
+  getDaysSinceLastMove
+}

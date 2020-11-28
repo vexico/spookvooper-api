@@ -2,9 +2,9 @@
 // Written by Brendan Lane
 
 /** @module modules/group */
-import axios from "axios";
+import axios from 'axios'
 
-let baseURL = "https://api.spookvooper.com/group";
+const baseURL = 'https://api.spookvooper.com/group'
 
 /**
  * Checks if a group exists.
@@ -14,20 +14,20 @@ let baseURL = "https://api.spookvooper.com/group";
  * @returns {string} The data from the HTTP GET request, but because of the way it's handled, will always be a string (should be a boolean).
  * @author Brendan Lane <me@imbl.me>
  */
-function doesGroupExist(svid, errToConsole) {
-    return new Promise((resolve, reject) => {
-        axios.get(`${baseURL}/doesGroupExist?svid=${svid}`)
-            .then(function (response) {
-                resolve(response.data);
-            })
-            .catch(function (error) {
-                if (errToConsole) {
-                    console.warn(error);
-                } else {
-                    reject(error);
-                }
-            });
-    });
+function doesGroupExist (svid, errToConsole) {
+  return new Promise((resolve, reject) => {
+    axios.get(`${baseURL}/doesGroupExist?svid=${svid}`)
+      .then(function (response) {
+        resolve(response.data)
+      })
+      .catch(function (error) {
+        if (errToConsole) {
+          console.warn(error)
+        } else {
+          reject(error)
+        }
+      })
+  })
 }
 
 /**
@@ -38,20 +38,20 @@ function doesGroupExist(svid, errToConsole) {
  * @returns {string} The data from the HTTP GET request, but because of the way it's handled, will always be a string (should be a JSON object).
  * @author Brendan Lane <me@imbl.me>
  */
-function getGroupMembers(svid, errToConsole) {
-    return new Promise((resolve, reject) => {
-        axios.get(`${baseURL}/getGroupMembers?svid=${svid}`)
-            .then(function (response) {
-                resolve(response.data);
-            })
-            .catch(function (error) {
-                if (errToConsole) {
-                    console.warn(error);
-                } else {
-                    reject(error);
-                }
-            });
-    });
+function getGroupMembers (svid, errToConsole) {
+  return new Promise((resolve, reject) => {
+    axios.get(`${baseURL}/getGroupMembers?svid=${svid}`)
+      .then(function (response) {
+        resolve(response.data)
+      })
+      .catch(function (error) {
+        if (errToConsole) {
+          console.warn(error)
+        } else {
+          reject(error)
+        }
+      })
+  })
 }
 
 /**
@@ -64,20 +64,20 @@ function getGroupMembers(svid, errToConsole) {
  * @returns {string} The data from the HTTP GET request, but because of the way it's handled, will always be a string (should be a JSON object).
  * @author Brendan Lane <me@imbl.me>
  */
-function hasGroupPermission(svid, usersvid, permission, errToConsole) {
-    return new Promise((resolve, reject) => {
-        axios.get(`${baseURL}/hasGroupPermission?svid=${svid}&usersvid=${usersvid}&permission=${permission}`)
-            .then(function (response) {
-                resolve(response.data);
-            })
-            .catch(function (error) {
-                if (errToConsole) {
-                    console.warn(error);
-                } else {
-                    reject(error);
-                }
-            });
-    });
+function hasGroupPermission (svid, usersvid, permission, errToConsole) {
+  return new Promise((resolve, reject) => {
+    axios.get(`${baseURL}/hasGroupPermission?svid=${svid}&usersvid=${usersvid}&permission=${permission}`)
+      .then(function (response) {
+        resolve(response.data)
+      })
+      .catch(function (error) {
+        if (errToConsole) {
+          console.warn(error)
+        } else {
+          reject(error)
+        }
+      })
+  })
 }
 
 /**
@@ -88,20 +88,20 @@ function hasGroupPermission(svid, usersvid, permission, errToConsole) {
  * @returns {string} The data from the HTTP GET request, but because of the way it's handled, will always be a string (should be a JSON object).
  * @author Brendan Lane <me@imbl.me>
  */
-function getSvidFromName(name, errToConsole) {
-    return new Promise((resolve, reject) => {
-        axios.get(`${baseURL}/getSvidFromName?name=${name}`)
-            .then(function (response) {
-                resolve(response.data);
-            })
-            .catch(function (error) {
-                if (errToConsole) {
-                    console.warn(error);
-                } else {
-                    reject(error);
-                }
-            });
-    });
+function getSvidFromName (name, errToConsole) {
+  return new Promise((resolve, reject) => {
+    axios.get(`${baseURL}/getSvidFromName?name=${name}`)
+      .then(function (response) {
+        resolve(response.data)
+      })
+      .catch(function (error) {
+        if (errToConsole) {
+          console.warn(error)
+        } else {
+          reject(error)
+        }
+      })
+  })
 }
 
 /**
@@ -112,26 +112,26 @@ function getSvidFromName(name, errToConsole) {
  * @returns {string} The data from the HTTP GET request, but because of the way it's handled, will always be a string (should be a JSON object).
  * @author Brendan Lane <me@imbl.me>
  */
-function getName(svid, errToConsole) {
-    return new Promise((resolve, reject) => {
-        axios.get(`${baseURL}/getName?svid=${svid}`)
-            .then(function (response) {
-                resolve(response.data);
-            })
-            .catch(function (error) {
-                if (errToConsole) {
-                    console.warn(error);
-                } else {
-                    reject(error);
-                }
-            });
-    });
+function getName (svid, errToConsole) {
+  return new Promise((resolve, reject) => {
+    axios.get(`${baseURL}/getName?svid=${svid}`)
+      .then(function (response) {
+        resolve(response.data)
+      })
+      .catch(function (error) {
+        if (errToConsole) {
+          console.warn(error)
+        } else {
+          reject(error)
+        }
+      })
+  })
 }
 
 export default {
-    doesGroupExist,
-    getGroupMembers,
-    hasGroupPermission,
-    getSvidFromName,
-    getName
-};
+  doesGroupExist,
+  getGroupMembers,
+  hasGroupPermission,
+  getSvidFromName,
+  getName
+}

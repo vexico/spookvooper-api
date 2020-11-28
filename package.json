@@ -1,28 +1,33 @@
 {
   "name": "spookvooperapi",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Easy to use library for the SpookVooper API",
   "main": "main.js",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "test": "node main.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/bowlingballindustries/spookvooper-api.git"
+    "url": "git+https://github.com/vexico/spookvooper-api.git"
   },
   "keywords": [
     "spookvooper",
     "api",
     "library"
   ],
-  "author": "bTech",
+  "author": "Vexi Technologies",
   "license": "SEE LICENSE IN LICENSE",
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
     "eslint": "^7.9.0",
     "prettier": "^2.1.1"
   },
   "dependencies": {
     "axios": "^0.20.0"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/vexico/spookvooper-api/issues"
+  },
+  "homepage": "https://vexi.cc/"
 }

@@ -2,10 +2,10 @@
 // Written by Brendan Lane
 
 /** @module modules/auth */
-import axios from "axios";
+import axios from 'axios'
 
-let baseURL = "https://spookvooper.com/oauth2";
-let urlReturn;
+const baseURL = 'https://spookvooper.com/oauth2'
+let urlReturn
 
 /**
  * Generates a Oauth2 URL for you. This just builds a string and DOES NOT need a promise. For any updates on how this works, check #sv-developer in the discord server. https://discord.gg/spookvooper. Get more information at the wiki. https://github.com/bowlingballindustries/spookvooper-api/wiki/Auth#authorize
@@ -17,19 +17,19 @@ let urlReturn;
  * @param {string} state The state parameter can have anything here. Will be returned to the server upon completion. This parameter is optional.
  * @returns {string} Will return a string containing a link to the Oauth2 authorization page. If there is an error, it will return "ERROR: Oauth2 URL Builder - A required variable is undefined or is missing."
  */
-function authorize(response_type, client_id, redirect_uri, scope, state) {
-    if (response_type === undefined || client_id === undefined || redirect_uri === undefined || scope === undefined) {
-        return "ERROR: Oauth2 URL Builder - A required variable is undefined or is missing.";
-    } else if (state === undefined) {
-        state = "";
-        urlReturn = `${baseURL}/authorize?response_type=${response_type}&client_id=${client_id}&redirect_uri=${redirect_uri}&scope=${scope}&state=${state}`;
-        urlReturn = urlReturn.split(" ").join("%20");
-        return urlReturn;
-    } else {
-        urlReturn = `${baseURL}/authorize?response_type=${response_type}&client_id=${client_id}&redirect_uri=${redirect_uri}&scope=${scope}&state=${state}`;
-        urlReturn = urlReturn.split(" ").join("%20");
-        return urlReturn;
-    }
+function authorize (response_type, client_id, redirect_uri, scope, state) {
+  if (response_type === undefined || client_id === undefined || redirect_uri === undefined || scope === undefined) {
+    return 'ERROR: Oauth2 URL Builder - A required variable is undefined or is missing.'
+  } else if (state === undefined) {
+    state = ''
+    urlReturn = `${baseURL}/authorize?response_type=${response_type}&client_id=${client_id}&redirect_uri=${redirect_uri}&scope=${scope}&state=${state}`
+    urlReturn = urlReturn.split(' ').join('%20')
+    return urlReturn
+  } else {
+    urlReturn = `${baseURL}/authorize?response_type=${response_type}&client_id=${client_id}&redirect_uri=${redirect_uri}&scope=${scope}&state=${state}`
+    urlReturn = urlReturn.split(' ').join('%20')
+    return urlReturn
+  }
 }
 
 /**
@@ -43,23 +43,23 @@ function authorize(response_type, client_id, redirect_uri, scope, state) {
  * @param {boolean} errToConsole If there is an error, send it to console, instead of returning. Defaults to false
  * @returns {string} The data from the HTTP GET request, but because of the way it's handled, will always be a string (should be a JSON Object containing the token, expire time in seconds, and the svid of the authorized user).
  */
-function requestToken(grant_type, code, redirect_uri, client_id, client_secret, errToConsole) {
-    return new Promise((resolve, reject) => {
-       axios.get(`${baseURL}/requestToken?grant_type=${grant_type}&code=${code}&redirect_uri=${redirect_uri}&client_id=${client_id}&client_secret=${client_secret}`)
-            .then(function (response) {
-                resolve(response.data);
-            })
-            .catch(function (error) {
-                if (errToConsole) {
-                    console.warn(error);
-                } else {
-                    reject(error);
-                }
-            });
-    });
+function requestToken (grant_type, code, redirect_uri, client_id, client_secret, errToConsole) {
+  return new Promise((resolve, reject) => {
+    axios.get(`${baseURL}/requestToken?grant_type=${grant_type}&code=${code}&redirect_uri=${redirect_uri}&client_id=${client_id}&client_secret=${client_secret}`)
+      .then(function (response) {
+        resolve(response.data)
+      })
+      .catch(function (error) {
+        if (errToConsole) {
+          console.warn(error)
+        } else {
+          reject(error)
+        }
+      })
+  })
 }
 
 export default {
-    authorize,
-    requestToken
-};
+  authorize,
+  requestToken
+}
