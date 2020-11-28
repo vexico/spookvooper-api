@@ -1,4 +1,4 @@
-# SpookVooper API Libraries
+# SpookVooper API Library
 
 Library that is used to easily access the SpookVooper API.
 
