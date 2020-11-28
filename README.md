@@ -23,7 +23,7 @@ svAPI.eco.getBalance("2a0057e6-356a-4a49-b825-c37796cb7bd9", true).then(value =>
 The value variable is what the function returns as a result.
 It gets passed to the callback function where you can use it.
 
-The [wiki](https://github.com/bowlingballindustries/spookvooper-api/wiki) is getting worked on constantly, but it will take a while so in the meantime, you can use the inline wiki. To use this feature we recommend people use [Visual Studio Code](https://code.visualstudio.com/).
+The [wiki](https://github.com/vexico/spookvooper-api/wiki) is getting worked on constantly, but it will take a while so in the meantime, you can use the inline wiki. To use this feature we recommend people use [Visual Studio Code](https://code.visualstudio.com/).
 
 ## Supported Routes
 
