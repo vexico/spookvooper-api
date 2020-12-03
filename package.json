@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@microsoft/signalr": "^5.0.0",
-    "axios": "^0.20.0"
+    "axios": "^0.21.0"
   },
   "bugs": {
     "url": "https://github.com/vexico/spookvooper-api/issues"
