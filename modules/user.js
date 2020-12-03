@@ -1,261 +1,170 @@
-// SpookVooper API - modules/user.js
-// Written by Brendan Lane
+// SpookVooper API - modules/User.js
+// Written by Brendan Lane - https://brndnln.dev
 
-/** @module modules/user */
-import axios from 'axios'
+const axios = require('axios')
+const userURL = "https://api.spookvooper.com/user"
+const ecoURL = "https://api.spookvooper.com/eco"
 
-const baseURL = 'https://api.spookvooper.com/user'
+class User {
+    #apikey = undefined;
 
-/**
- * Gets information on the user
- * @function getUser
- * @param {string} svid The svid for the user.
- * @param {boolean} errToConsole If there is an error, send it to console, instead of returning. Defaults to false
- * @returns {string} The data from the HTTP GET request, but because of the way it's handled, will always be a string (should be a JSON object).
- * @author Brendan Lane <me@imbl.me>
- */
-function getUser (svid, errToConsole) {
-  return new Promise((resolve, reject) => {
-    axios.get(`${baseURL}/getUser?svid=${svid}`)
-      .then(function (response) {
-        resolve(response.data)
-      })
-      .catch(function (error) {
-        if (errToConsole) {
-          console.warn(error)
-        } else {
-          reject(error)
+    constructor(svid) {
+        this.svid = svid
+
+        if (!this.svid.startsWith('u-')) {
+            throw "Error: A user must have a 'u-' or else it is not a user!"
         }
-      })
-  })
-}
+    }
 
-/**
- * Gets the username of a user
- * @function getUsername
- * @param {string} svid The svid for the user lookup.
- * @param {boolean} errToConsole If there is an error, send it to console, instead of returning. Defaults to false
- * @returns {string} The data from the HTTP GET request, but because of the way it's handled, will always be a string (should be a string).
- * @author Brendan Lane <me@imbl.me>
- */
-function getUsername (svid, errToConsole) {
-  return new Promise((resolve, reject) => {
-    axios.get(`${baseURL}/getUsername?svid=${svid}`)
-      .then(function (response) {
-        resolve(response.data)
-      })
-      .catch(function (error) {
-        if (errToConsole) {
-          console.warn(error)
+    getUser() {
+        return new Promise((resolve, reject) => {
+            axios.get(`${userURL}/getUser?svid=${this.svid}`)
+                .then(function (response) {
+                    resolve(response.data);
+                })
+                .catch(function (error) {
+                    reject(error);
+                });
+        });
+    }
+
+    getUsername() {
+        return new Promise((resolve, reject) => {
+            axios.get(`${userURL}/getUsername?svid=${this.svid}`)
+                .then(function (response) {
+                    resolve(response.data);
+                })
+                .catch(function (error) {
+                    reject(error);
+                });
+        });
+    }
+
+    getBalance() {
+        return new Promise((resolve, reject) => {
+            axios.get(`${ecoURL}/getBalance?svid=${this.svid}`)
+                .then(function (response) {
+                    resolve(response.data);
+                })
+                .catch(function (error) {
+                    reject(error);
+                });
+        });
+    }
+
+    hasDiscordRole(role) {
+        return new Promise((resolve, reject) => {
+            axios.get(`${userURL}/hasDiscordRole?userid=${this.svid}&role=${role}`)
+                .then(function (response) {
+                    resolve(response.data);
+                })
+                .catch(function (error) {
+                    reject(error);
+                });
+        });
+    }
+
+    getDiscordRoles() {
+        return new Promise((resolve, reject) => {
+            axios.get(`${userURL}/getDiscordRoles?svid=${this.svid}`)
+                .then(function (response) {
+                    resolve(response.data);
+                })
+                .catch(function (error) {
+                    reject(error);
+                });
+        });
+    }
+
+    getDaysSinceLastMove() {
+        return new Promise((resolve, reject) => {
+            axios.get(`${userURL}/getDaysSinceLastMove?svid=${this.svid}`)
+                .then(function (response) {
+                    resolve(response.data);
+                })
+                .catch(function (error) {
+                    reject(error);
+                });
+        });
+    }
+
+    set setApiKey(key) {
+        this.#apikey = key;
+    }
+
+    sendCredits(amount, to, reason) {
+        if (typeof to === "string") {
+            return new Promise((resolve, reject) => {
+                axios.get(`${ecoURL}/sendTransactionByIds?from=${this.svid}&to=${to}&amount=${amount}&auth=${this.#apikey}&detail=${reason}`)
+                    .then(function (response) {
+                        resolve(response.data);
+                    })
+                    .catch(function (error) {
+                        reject(error);
+                    });
+            });
+        } else if (typeof to === "object") {
+            return new Promise((resolve, reject) => {
+                axios.get(`${ecoURL}/sendTransactionByIds?from=${this.svid}&to=${to.svid}&amount=${amount}&auth=${this.#apikey}&detail=${reason}`)
+                    .then(function (response) {
+                        resolve(response.data);
+                    })
+                    .catch(function (error) {
+                        reject(error);
+                    });
+                });
         } else {
-          reject(error)
+            throw "The 'to' parameter must be a string or an object!";
         }
-      })
-  })
+    }
+
+    getUserStockOffers(ticker) {
+        return new Promise((resolve, reject) => {
+            axios.get(`${ecoURL}/getUserStockOffers?ticker=${ticker}&svid=${this.svid}`)
+                .then(function (response) {
+                    resolve(response.data);
+                })
+                .catch(function (error) {
+                    reject(error);
+                });
+        });
+    }
+
+    buyStock(ticker, amount, price) {
+        return new Promise((resolve, reject) => {
+            axios.get(`${ecoURL}/submitStockBuy?ticker=${ticker}&count=${amount}&price=${price}&accountid=${this.svid}&auth=${this.#apikey}`)
+                .then(function (response) {
+                    resolve(response.data);
+                })
+                .catch(function (error) {
+                    reject(error);
+                });
+        });
+    }
+
+    sellStock(ticker, amount, price) {
+        return new Promise((resolve, reject) => {
+            axios.get(`${ecoURL}/submitStockSell?ticker=${ticker}&count=${amount}&price=${price}&accountid=${this.svid}&auth=${this.#apikey}`)
+                .then(function (response) {
+                    resolve(response.data);
+                })
+                .catch(function (error) {
+                    reject(error);
+                });
+        });
+    }
+
+    cancelStockOrder(orderid) {
+        return new Promise((resolve, reject) => {
+            axios.get(`${ecoURL}/cancelOrder?orderid=${orderid}&accountid=${this.svid}&auth=${this.#apikey}`)
+                .then(function (response) {
+                    resolve(response.data);
+                })
+                .catch(function (error) {
+                    reject(error);
+                });
+        });
+    }
 }
 
-/**
- * Gets the svid of a user from their username
- * @function getSvidFromUsername
- * @param {string} username The username of the user
- * @param {boolean} errToConsole If there is an error, send it to console, instead of returning. Defaults to false
- * @returns {string} The data from the HTTP GET request, but because of the way it's handled, will always be a string (should be a string).
- * @author Brendan Lane <me@imbl.me>
- */
-function getSvidFromUsername (username, errToConsole) {
-  return new Promise((resolve, reject) => {
-    axios.get(`${baseURL}/getSvidFromUsername?username=${username}`)
-      .then(function (response) {
-        resolve(response.data)
-      })
-      .catch(function (error) {
-        if (errToConsole) {
-          console.warn(error)
-        } else {
-          reject(error)
-        }
-      })
-  })
-}
-
-/**
- * Gets the username from their linked discord account
- * @function getUsernameFromDiscord
- * @param {string} discordid The discord User ID for the user account.
- * @param {boolean} errToConsole If there is an error, send it to console, instead of returning. Defaults to false
- * @returns {string} The data from the HTTP GET request, but because of the way it's handled, will always be a string (should be a string).
- * @author Brendan Lane <me@imbl.me>
- */
-function getUsernameFromDiscord (discordid, errToConsole) {
-  return new Promise((resolve, reject) => {
-    axios.get(`${baseURL}/getUsernameFromDiscord?discordid=${discordid}`)
-      .then(function (response) {
-        resolve(response.data)
-      })
-      .catch(function (error) {
-        if (errToConsole) {
-          console.warn(error)
-        } else {
-          reject(error)
-        }
-      })
-  })
-}
-
-/**
- * Gets the SVID of a user who has their discord account linked.
- * @function getSvidFromDiscord
- * @param {string} discordid The discord user ID
- * @param {boolean} errToConsole If there is an error, send it to console, instead of returning. Defaults to false
- * @returns {string} The data from the HTTP GET request, but because of the way it's handled, will always be a string (should be a string).
- * @author Brendan Lane <me@imbl.me>
- */
-function getSvidFromDiscord (discordid, errToConsole) {
-  return new Promise((resolve, reject) => {
-    axios.get(`${baseURL}/getSvidFromDiscord?discordid=${discordid}`)
-      .then(function (response) {
-        resolve(response.data)
-      })
-      .catch(function (error) {
-        if (errToConsole) {
-          console.warn(error)
-        } else {
-          reject(error)
-        }
-      })
-  })
-}
-
-/**
- * Gets the username from the minecraft UUID.
- * @function getUsernameFromMinecraft
- * @param {string} minecraftid The UUID of the minecraft user.
- * @param {boolean} errToConsole If there is an error, send it to console, instead of returning. Defaults to false
- * @returns {string} The data from the HTTP GET request, but because of the way it's handled, will always be a string (should be a string).
- * @author Brendan Lane <me@imbl.me>
- */
-function getUsernameFromMinecraft (minecraftid, errToConsole) {
-  return new Promise((resolve, reject) => {
-    axios.get(`${baseURL}/getUsernameFromMinecraft?minecraftid=${minecraftid}`)
-      .then(function (response) {
-        resolve(response.data)
-      })
-      .catch(function (error) {
-        if (errToConsole) {
-          console.warn(error)
-        } else {
-          reject(error)
-        }
-      })
-  })
-}
-
-/**
- * Gets the SVID from the minecraft UUID.
- * @function getSvidFromMinecraft
- * @param {string} minecraftid The UUID of the minecraft user.
- * @param {boolean} errToConsole If there is an error, send it to console, instead of returning. Defaults to false
- * @returns {string} The data from the HTTP GET request, but because of the way it's handled, will always be a string (should be a string).
- * @author Brendan Lane <me@imbl.me>
- */
-function getSvidFromMinecraft (minecraftid, errToConsole) {
-  return new Promise((resolve, reject) => {
-    axios.get(`${baseURL}/getSvidFromMinecraft?minecraftid=${minecraftid}`)
-      .then(function (response) {
-        resolve(response.data)
-      })
-      .catch(function (error) {
-        if (errToConsole) {
-          console.warn(error)
-        } else {
-          reject(error)
-        }
-      })
-  })
-}
-
-/**
- * Checks if the user has a discord role
- * @function hasDiscordRole
- * @param {string} userid The SVID of the user you want to lookup
- * @param {string} role The name of the role you want to lookup.
- * @param {boolean} errToConsole If there is an error, send it to console, instead of returning. Defaults to false
- * @returns {string} The data from the HTTP GET request, but because of the way it's handled, will always be a string (should be a boolean).
- * @author Brendan Lane <me@imbl.me>
- */
-function hasDiscordRole (userid, role, errToConsole) {
-  return new Promise((resolve, reject) => {
-    axios.get(`${baseURL}/hasDiscordRole?userid=${userid}&role=${role}`)
-      .then(function (response) {
-        resolve(response.data)
-      })
-      .catch(function (error) {
-        if (errToConsole) {
-          console.warn(error)
-        } else {
-          reject(error)
-        }
-      })
-  })
-}
-
-/**
- * Gets the discord roles of a user
- * @function getDiscordRoles
- * @param {string} svid The svid of the user you want to lookup
- * @param {boolean} errToConsole If there is an error, send it to console, instead of returning. Defaults to false
- * @returns {string} The data from the HTTP GET request, but because of the way it's handled, will always be a string (should be a JSON Object).
- * @author Brendan Lane <me@imbl.me>
- */
-function getDiscordRoles (svid, errToConsole) {
-  return new Promise((resolve, reject) => {
-    axios.get(`${baseURL}/getDiscordRoles?svid=${svid}`)
-      .then(function (response) {
-        resolve(response.data)
-      })
-      .catch(function (error) {
-        if (errToConsole) {
-          console.warn(error)
-        } else {
-          reject(error)
-        }
-      })
-  })
-}
-
-/**
- * Gets the days since the last move of a user
- * @function getDiscordRoles
- * @param {string} svid The svid of the user you want to lookup
- * @param {boolean} errToConsole If there is an error, send it to console, instead of returning. Defaults to false
- * @returns {string} The data from the HTTP GET request, but because of the way it's handled, will always be a string (should be a integer).
- * @author Brendan Lane <me@imbl.me>
- */
-function getDaysSinceLastMove (svid, errToConsole) {
-  return new Promise((resolve, reject) => {
-    axios.get(`${baseURL}/getDaysSinceLastMove?svid=${svid}`)
-      .then(function (response) {
-        resolve(response.data)
-      })
-      .catch(function (error) {
-        if (errToConsole) {
-          console.warn(error)
-        } else {
-          reject(error)
-        }
-      })
-  })
-}
-
-export default {
-  getUser,
-  getUsername,
-  getSvidFromUsername,
-  getUsernameFromDiscord,
-  getSvidFromDiscord,
-  getUsernameFromMinecraft,
-  getSvidFromMinecraft,
-  hasDiscordRole,
-  getDiscordRoles,
-  getDaysSinceLastMove
-}
+module.exports = User
