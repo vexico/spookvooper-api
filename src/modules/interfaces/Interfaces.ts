@@ -11,8 +11,8 @@ export interface EntityUser {
   getStockOffers: () => Promise<any>
   buyStock: () => Promise<any>
   sellStock: () => Promise<any>
-  readonly svid: string
-  readonly apikey: string
+  svid: string
+  apikey: string
 }
 
 export interface ConfigUser {
@@ -22,4 +22,9 @@ export interface ConfigUser {
 
 export interface EntityGroup {
   svid: string
+}
+
+export interface AuthConfig {
+  clientid: string
+  clientsecret: string
 }
