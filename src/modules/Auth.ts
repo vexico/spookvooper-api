@@ -59,6 +59,26 @@ class Auth {
       return this.urlReturn
     }
   }
+
+  public async requestToken (redirect: string): Promise<any> {
+    return await new Promise((resolve, reject) => {
+      axios.get(`${authURL}/requestToken`, {
+        params: {
+          grant_type: 'authorization_code',
+          code: this.code,
+          redirect_uri: redirect,
+          client_id: this.appid,
+          client_secret: this.appsecret
+        }
+      })
+        .then((response) => {
+          resolve(response.data)
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
+  }
 }
 
 export default Auth

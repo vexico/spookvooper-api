@@ -19,5 +19,5 @@ You can [email](mailto:me@brndnln.dev?cc=bluebeargreen2@gmail.com&subject=%F0%9F
 us about your findings, just don't send them to us over Discord, post them in any public places, etc.
 Basically don't be a moron. You can also tell us that you sent us an email over at [our bounties site](https://bounties.vexi.cc) (just wait until its done)
 
-> Happy Hacking!  
->  \- Brendan Lane
+Happy Hacking!  
+ \- Brendan Lane
