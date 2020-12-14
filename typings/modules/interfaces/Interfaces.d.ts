@@ -17,6 +17,12 @@ export interface ConfigUser {
   svid: string
   apikey?: string
 }
+
 export interface EntityGroup {
   svid: string
+}
+
+export interface AuthConfig {
+  clientid: string
+  clientsecret: string
 }
