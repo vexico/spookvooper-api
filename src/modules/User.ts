@@ -2,11 +2,11 @@
 // Written by Brendan Lane - https://brndnln.dev
 
 import axios from 'axios'
-import { CreditAmount, PaymentEntity, SVStockTicker } from './types/Types'
+import { CreditAmount, PaymentEntity } from './types/Types'
 import { ConfigUser } from './interfaces/Interfaces'
 
-const userURL: string = 'https://api.spookvooper.com/user'
-const ecoURL: string = 'https://api.spookvooper.com/eco'
+const userURL = 'https://api.spookvooper.com/user'
+const ecoURL = 'https://api.spookvooper.com/eco'
 
 class User {
   private accountid: string
@@ -146,7 +146,7 @@ class User {
     }
   }
 
-  public async getStockOffers (ticker: SVStockTicker): Promise<any> {
+  public async getStockOffers (ticker: string): Promise<any> {
     return await new Promise((resolve, reject) => {
       axios.get(`${ecoURL}/getUserStockOffers`, {
         params: {
@@ -163,7 +163,7 @@ class User {
     })
   }
 
-  public async buyStock (ticker: SVStockTicker, amount: number, price: CreditAmount): Promise<any> {
+  public async buyStock (ticker: string, amount: number, price: CreditAmount): Promise<any> {
     return await new Promise((resolve, reject) => {
       axios.get(`${ecoURL}/submitStockBuy`, {
         params: {
@@ -183,7 +183,7 @@ class User {
     })
   }
 
-  public async sellStock (ticker: SVStockTicker, amount: number, price: CreditAmount): Promise<any> {
+  public async sellStock (ticker: string, amount: number, price: CreditAmount): Promise<any> {
     return await new Promise((resolve, reject) => {
       axios.get(`${ecoURL}/submitStockSell`, {
         params: {
