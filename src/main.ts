@@ -4,9 +4,11 @@
 import User from './modules/User'
 import Group from './modules/Group'
 import Auth from './modules/Auth'
+import District from './modules/District'
 
 export {
   User,
   Group,
-  Auth
+  Auth,
+  District
 }

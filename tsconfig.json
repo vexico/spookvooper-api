@@ -11,8 +11,8 @@
             "ESNext.Symbol",
             "DOM"
         ],
-        "sourceMap": true,
-        "inlineSourceMap": false,
+        "sourceMap": false,
+        "inlineSourceMap": true,
         "inlineSources": true,
         "incremental": true,
         "esModuleInterop": true,

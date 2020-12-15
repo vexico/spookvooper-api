@@ -3,9 +3,22 @@
 
 import { EntityUser, AuthConfig as AuthConfigInt } from './../interfaces/Interfaces'
 
-export type CreditAmount = string | number
-export type PaymentEntity = string | EntityUser
-export type SVStockTicker = 'B' | 'IDE' | 'NEWS' | 'POT' | 'TECH' | 'TYCO' | 'VC' | 'VNB' | 'VU' | 'X'
-export type AuthEntity = EntityUser
-export type GroupMember = string | EntityUser
-export type AuthConfig = AuthConfigInt
+type CreditAmount = string | number
+type PaymentEntity = string | EntityUser
+type AuthEntity = EntityUser
+type GroupMember = string | EntityUser
+type AuthConfig = AuthConfigInt
+type District = 'Voopmont' | 'New Yam' | 'San Vooperisco' | 'Medievala' | 'Landing Cove' | 'New Spudland' | 'Vooperia City' | 'Corgi' | 'Old Yam' | 'New Vooperis' | 'The Netherlands' | 'Queensland' | 'Servers Past' | 'Los Vooperis' | 'Old King Peninsula'
+type DistrictWealthType = 'ALL' | 'USER' | 'GROUP'
+type SenatorDistrict = District | 'ALL'
+
+export {
+  CreditAmount,
+  PaymentEntity,
+  AuthEntity,
+  GroupMember,
+  AuthConfig,
+  District,
+  DistrictWealthType,
+  SenatorDistrict
+}
