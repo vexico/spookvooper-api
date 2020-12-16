@@ -1,7 +1,11 @@
 // SpookVooper API - modules/interfaces/Interfaces.ts
 // Written by Brendan Lane - https://brndnln.dev/
 
+import { DistrictWealthType, SenatorDistrict } from '../types/Types'
+
 interface EntityUser {
+  svid: string
+  apikey: string
   getUser: () => Promise<any>
   getUsername: () => Promise<any>
   getBalance: () => Promise<any>
@@ -11,23 +15,35 @@ interface EntityUser {
   getStockOffers: () => Promise<any>
   buyStock: () => Promise<any>
   sellStock: () => Promise<any>
-  svid: string
-  apikey: string
-}
-
-interface ConfigUser {
-  svid: string
-  apikey?: string
 }
 
 interface EntityGroup {
   svid: string
 }
 
-interface AuthConfig {
+interface EntityDistrict {
+  name: string
+  getWealth: (type: DistrictWealthType) => Promise<number>
+  getSenator: (district: SenatorDistrict) => Promise<ReturnedUser>
+}
+
+/*
+    Class Constructor Configuration
+*/
+
+interface ConfigUser {
+  svid: string
+  apikey?: string
+}
+
+interface ConfigAuth {
   clientid: string
   clientsecret: string
 }
+
+/*
+    Returned values from SVAPI
+*/
 
 interface ReturnedUser {
   userName: string
@@ -61,9 +77,13 @@ interface ReturnedUser {
 }
 
 export {
+  // API Entities
   EntityUser,
   EntityGroup,
+  EntityDistrict,
+  // Class Config Interfaces
   ConfigUser,
-  AuthConfig,
+  ConfigAuth,
+  // API Return Values
   ReturnedUser
 }
