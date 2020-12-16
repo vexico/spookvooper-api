@@ -48,7 +48,7 @@ class District {
     this.districtName = name
   }
 
-  public async getWealth (type: DistrictWealthType): Promise<any> {
+  public async getWealth (type: DistrictWealthType): Promise<number> {
     switch (type.toUpperCase()) {
       case 'ALL':
         return await new Promise((resolve, reject) => {
@@ -105,7 +105,7 @@ class District {
       axios.get(`${userURL}/getSenators`)
         .then((response) => {
           const data: any[] = response.data
-          if (district !== undefined) {
+          if (district !== undefined && district !== 'ALL') {
             const found = data.find(user => user.district === district)
             resolve(found)
           } else if (district === 'ALL') {
