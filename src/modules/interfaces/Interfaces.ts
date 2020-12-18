@@ -76,6 +76,20 @@ interface ReturnedUser {
   image_Url: string | null
 }
 
+interface ReturnedTransaction {
+  FromAccount: string
+  ToAccount: string
+  Amount: number
+  Detail: string
+  Force: boolean
+  IsCompleted: boolean
+  Tax: number
+  Result: {
+    Info: string
+    Succeeded: boolean
+  }
+}
+
 export {
   // API Entities
   EntityUser,
@@ -85,5 +99,6 @@ export {
   ConfigUser,
   ConfigAuth,
   // API Return Values
-  ReturnedUser
+  ReturnedUser,
+  ReturnedTransaction
 }
