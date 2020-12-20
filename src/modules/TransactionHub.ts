@@ -11,8 +11,6 @@ const URI = 'https://spookvooper.com/transactionHub'
 const retryTime = 5
 const retryTimeMS = retryTime * 1000
 
-const fancy = true
-
 class TransactionHub {
   private readonly connection = new HubConnectionBuilder()
     .withUrl(URI)
@@ -36,26 +34,22 @@ class TransactionHub {
   })
 
   constructor () {
-    this.connection.onclose(function (e: any): void {
+    this.connection.onclose((e) => {
       this.onClosed(e)
     })
+
+    this.start()
   }
 
   public async start (): Promise<void> {
-    console.log(`[TransactionHub] Starting connection between local and ${URI}`)
+    console.log(`TransactionHub: Starting connection between local and ${URI}`)
 
     try {
       await this.connection.start()
-      console.log('[TransactionHub] Connected!')
+      console.log('TransactionHub: Connected!')
     } catch (e) {
-      if (fancy) {
-        console.log('--------------------------------')
-      }
-      console.error('[TransactionHub] Error: Connection failed while trying to establish a connection\n', e)
-      if (fancy) {
-        console.log('--------------------------------')
-      }
-      console.log(`[TransactionHub] Retrying in ${retryTime} seconds`)
+      console.error('TransactionHub Error: Connection failed while trying to establish a connection\n', e)
+      console.log(`TransactionHub: Retrying in ${retryTime} seconds`)
       setTimeout(() => {
         this.start()
       }, retryTimeMS)
@@ -63,14 +57,7 @@ class TransactionHub {
   }
 
   private async onClosed (e: any): Promise<void> {
-    if (fancy) {
-      console.log('--------------------------------')
-    }
-    console.error('[TransactionHub] Error: Connection closed unexpectedly', e)
-    if (fancy) {
-      console.log('--------------------------------')
-    }
-
+    console.error('TransactionHub Error: Connection closed unexpectedly', e)
     await this.start()
   }
 }

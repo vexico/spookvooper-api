@@ -5,10 +5,14 @@ import User from './modules/User'
 import Group from './modules/Group'
 import Auth from './modules/Auth'
 import District from './modules/District'
+import Stock from './modules/Stock'
+import TransactionHub from './modules/TransactionHub'
 
 export {
   User,
   Group,
   Auth,
-  District
+  District,
+  Stock,
+  TransactionHub
 }
