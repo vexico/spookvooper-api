@@ -11,6 +11,7 @@ type AuthConfig = ConfigAuth
 type District = 'Voopmont' | 'New Yam' | 'San Vooperisco' | 'Medievala' | 'Landing Cove' | 'New Spudland' | 'Vooperia City' | 'Corgi' | 'Old Yam' | 'New Vooperis' | 'The Netherlands' | 'Queensland' | 'Servers Past' | 'Los Vooperis' | 'Old King Peninsula'
 type DistrictWealthType = 'ALL' | 'USER' | 'GROUP'
 type SenatorDistrict = District | 'ALL'
+type QueueType = 'BUY' | 'SELL'
 
 export {
   CreditAmount,
@@ -20,5 +21,6 @@ export {
   AuthConfig,
   District,
   DistrictWealthType,
-  SenatorDistrict
+  SenatorDistrict,
+  QueueType
 }
