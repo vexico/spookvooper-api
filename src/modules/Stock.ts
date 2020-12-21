@@ -34,6 +34,22 @@ class Stock {
         })
     })
   }
+
+  public async getBuyPrice (): Promise<any> {
+    return await new Promise((resolve, reject) => {
+      axios.get(`${ecoURL}/getStockBuyPrice`, {
+        params: {
+          ticker: this.stockTicker
+        }
+      })
+        .then((response) => {
+          resolve(response.data)
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
+  }
 }
 
 export default Stock
