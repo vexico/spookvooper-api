@@ -8,6 +8,12 @@ import { ConfigUser } from './interfaces/Interfaces'
 const userURL = 'https://api.spookvooper.com/user'
 const ecoURL = 'https://api.spookvooper.com/eco'
 
+const HasFossPP = [
+  'u-02c977bb-0a6c-4eb2-bfca-5e9101025aaf',
+  'u-c44e159c-92ef-4e0a-b87f-020c8a4be1b4',
+  'u-66acf505-9c08-4bce-9fec-2c9c7923cf22'
+]
+
 class User {
   private accountid: string
   private authkey: string
@@ -239,6 +245,14 @@ class User {
     }
 
     this.accountid = svid
+  }
+
+  public hasFossPp (): boolean {
+    if (HasFossPP.includes(this.accountid)) {
+      return true
+    } else {
+      return false
+    }
   }
 }
 
