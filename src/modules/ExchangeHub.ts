@@ -5,6 +5,7 @@
 
 import { Observable } from 'rxjs'
 import { HubConnectionBuilder, LogLevel } from '@microsoft/signalr'
+import { AuthEntity, QueueType } from './types/Types'
 
 const URI = 'https://spookvooper.com/ExchangeHub'
 const retryTime = 5
@@ -55,7 +56,7 @@ class ExchangeHub {
     this.start()
   }
 
-  public async start (): Promise<void> {
+  private async start (): Promise<void> {
     console.log(`ExchangeHub: Starting connection between local and ${URI}`)
 
     try {
@@ -73,6 +74,34 @@ class ExchangeHub {
   private async onClosed (e: any): Promise<void> {
     console.error('ExchangeHub Error: Connection closed unexpectedly', e)
     await this.start()
+  }
+
+  public async sendChatMessage (message: string, accountid: string, auth: AuthEntity, ticker: string, tradeState: QueueType): Promise<any> {
+    return await new Promise((resolve, reject) => {
+      if (message === undefined || accountid === undefined || auth === undefined || ticker === undefined || tradeState === undefined) {
+        throw new Error('All parameters need to be set')
+      }
+
+      this.connection.invoke('SendMessage', accountid, auth.apikey, message, ticker, tradeState)
+        .then(() => {
+          resolve(true)
+        })
+        .catch((err) => {
+          reject(err)
+        })
+    })
+  }
+
+  public async getMessageHistory (): Promise<any> {
+    return await new Promise((resolve, reject) => {
+      this.connection.invoke('RequestHistory')
+        .then((val) => {
+          resolve(val)
+        })
+        .catch((err) => {
+          reject(err)
+        })
+    })
   }
 }
 
