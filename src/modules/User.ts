@@ -227,6 +227,21 @@ class User {
     })
   }
 
+  /*
+  FIXME: This method is at the current moment deprecated. Please someone get on this.
+
+  public async totalXP (): Promise<any> {
+    return await new Promise((resolve, reject) => {
+      try {
+        const userData = this.getUser()
+        resolve(userData.post_likes + userData.comment_likes + (userData.twitch_message_xp * 4) + (userData.discord_commends * 5) + (userData.discord_message_xp * 2) + (userData.discord_game_xp / 100))
+      } catch (e) {
+        reject(e)
+      }
+    })
+  }
+  */
+
   public get apikey (): string {
     return this.authkey
   }
