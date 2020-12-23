@@ -2,6 +2,7 @@
 // Written by Brendan Lane - https://brndnln.dev/
 
 import axios from 'axios'
+import { EntityUser } from './interfaces/Interfaces'
 import { AuthEntity, CreditAmount, GroupMember, PaymentEntity } from './types/Types'
 
 const groupURL = 'https://api.spookvooper.com/group'
@@ -34,7 +35,7 @@ class Group {
     })
   }
 
-  public async sendCredits (amount: CreditAmount, to: PaymentEntity, reason: string, auth: AuthEntity): Promise<any> {
+  public async sendCredits (amount: CreditAmount, to: PaymentEntity, reason: string, auth: EntityUser): Promise<any> {
     if (typeof to === 'string') {
       return await new Promise((resolve, reject) => {
         axios.get(`${ecoURL}/sendTransactionByIds`, {
@@ -156,6 +157,81 @@ class Group {
     }
 
     this.accountid = svid
+  }
+
+  public async getStockOffers (ticker: string): Promise<any> {
+    return await new Promise((resolve, reject) => {
+      axios.get(`${ecoURL}/getUserStockOffers`, {
+        params: {
+          ticker: ticker,
+          svid: this.accountid
+        }
+      })
+        .then((response) => {
+          resolve(response.data)
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
+  }
+
+  public async buyStock (ticker: string, amount: number, price: CreditAmount, auth: AuthEntity): Promise<any> {
+    return await new Promise((resolve, reject) => {
+      axios.get(`${ecoURL}/submitStockBuy`, {
+        params: {
+          ticker: ticker,
+          count: amount,
+          price: price,
+          accountid: this.accountid,
+          auth: auth.apikey
+        }
+      })
+        .then((response) => {
+          resolve(response.data)
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
+  }
+
+  public async sellStock (ticker: string, amount: number, price: CreditAmount, auth: AuthEntity): Promise<any> {
+    return await new Promise((resolve, reject) => {
+      axios.get(`${ecoURL}/submitStockSell`, {
+        params: {
+          ticker: ticker,
+          count: amount,
+          price: price,
+          accountid: this.accountid,
+          auth: auth.apikey
+        }
+      })
+        .then((response) => {
+          resolve(response.data)
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
+  }
+
+  public async cancelOffer (orderid: number, auth: AuthEntity): Promise<any> {
+    return await new Promise((resolve, reject) => {
+      axios.get(`${ecoURL}/cancelOrder`, {
+        params: {
+          orderid: orderid,
+          accountid: this.accountid,
+          auth: auth.apikey
+        }
+      })
+        .then((response) => {
+          resolve(response.data)
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
   }
 }
 

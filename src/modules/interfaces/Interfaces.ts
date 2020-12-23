@@ -1,7 +1,7 @@
 // SpookVooper API - modules/interfaces/Interfaces.ts
 // Written by Brendan Lane - https://brndnln.dev/
 
-import { DistrictWealthType, SenatorDistrict } from '../types/Types'
+import { CreditAmount, DistrictWealthType, PaymentEntity, SenatorDistrict } from '../types/Types'
 
 interface EntityUser {
   svid: string
@@ -9,12 +9,12 @@ interface EntityUser {
   getUser: () => Promise<any>
   getUsername: () => Promise<any>
   getBalance: () => Promise<any>
-  hasDiscordRole: () => Promise<any>
+  hasDiscordRole: (role: string) => Promise<any>
   getDiscordRoles: () => Promise<any>
-  sendCredits: () => Promise<any>
-  getStockOffers: () => Promise<any>
-  buyStock: () => Promise<any>
-  sellStock: () => Promise<any>
+  sendCredits: (amount: CreditAmount, to: PaymentEntity, reason: string) => Promise<any>
+  getStockOffers: (ticker: string) => Promise<any>
+  buyStock: (ticker: string, amount: number, price: CreditAmount) => Promise<any>
+  sellStock: (ticker: string, amount: number, price: CreditAmount) => Promise<any>
 }
 
 interface EntityGroup {
