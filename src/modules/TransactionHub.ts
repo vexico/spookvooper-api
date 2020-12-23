@@ -23,6 +23,9 @@ class TransactionHub {
   public fromAccount: string
   public toAccount: string
 
+  public fromType: string
+  public toType: string
+
   public event = new Observable((observer) => {
     this.connection.on('NotifyTransaction', (recieved: string) => {
       this.val = JSON.parse(recieved)
