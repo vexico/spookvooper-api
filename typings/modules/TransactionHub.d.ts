@@ -4,6 +4,8 @@ declare class TransactionHub {
   private readonly val
   fromAccount: string
   toAccount: string
+  fromType: string
+  toType: string
   event: Observable<unknown>
   constructor ();
   start (): Promise<void>;

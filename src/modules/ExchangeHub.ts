@@ -5,7 +5,8 @@
 
 import { Observable } from 'rxjs'
 import { HubConnectionBuilder, LogLevel } from '@microsoft/signalr'
-import { AuthEntity, QueueType } from './types/Types'
+import { QueueType } from './types/Types'
+import { EntityUser } from './interfaces/Interfaces'
 
 const URI = 'https://spookvooper.com/ExchangeHub'
 const retryTime = 5
@@ -76,7 +77,7 @@ class ExchangeHub {
     await this.start()
   }
 
-  public async sendChatMessage (message: string, accountid: string, auth: AuthEntity, ticker: string, tradeState: QueueType): Promise<any> {
+  public async sendChatMessage (message: string, accountid: string, auth: EntityUser, ticker: string, tradeState: QueueType): Promise<any> {
     return await new Promise((resolve, reject) => {
       if (message === undefined || accountid === undefined || auth === undefined || ticker === undefined || tradeState === undefined) {
         throw new Error('All parameters need to be set')

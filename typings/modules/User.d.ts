@@ -9,6 +9,7 @@ declare class User {
   getBalance (): Promise<any>;
   hasDiscordRole (role: string): Promise<any>;
   getDiscordRoles (): Promise<any>;
+  getDaysSinceLastMove (): Promise<any>;
   sendCredits (amount: CreditAmount, to: PaymentEntity, reason: string): Promise<any>;
   getStockOffers (ticker: string): Promise<any>;
   buyStock (ticker: string, amount: number, price: CreditAmount): Promise<any>;

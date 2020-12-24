@@ -3,7 +3,7 @@
 
 import axios from 'axios'
 import { EntityUser } from './interfaces/Interfaces'
-import { AuthEntity, CreditAmount, GroupMember, PaymentEntity } from './types/Types'
+import { CreditAmount, GroupMember, PaymentEntity } from './types/Types'
 
 const groupURL = 'https://api.spookvooper.com/group'
 const ecoURL = 'https://api.spookvooper.com/eco'
@@ -176,7 +176,7 @@ class Group {
     })
   }
 
-  public async buyStock (ticker: string, amount: number, price: CreditAmount, auth: AuthEntity): Promise<any> {
+  public async buyStock (ticker: string, amount: number, price: CreditAmount, auth: EntityUser): Promise<any> {
     return await new Promise((resolve, reject) => {
       axios.get(`${ecoURL}/submitStockBuy`, {
         params: {
@@ -196,7 +196,7 @@ class Group {
     })
   }
 
-  public async sellStock (ticker: string, amount: number, price: CreditAmount, auth: AuthEntity): Promise<any> {
+  public async sellStock (ticker: string, amount: number, price: CreditAmount, auth: EntityUser): Promise<any> {
     return await new Promise((resolve, reject) => {
       axios.get(`${ecoURL}/submitStockSell`, {
         params: {
@@ -216,7 +216,7 @@ class Group {
     })
   }
 
-  public async cancelOffer (orderid: number, auth: AuthEntity): Promise<any> {
+  public async cancelOffer (orderid: number, auth: EntityUser): Promise<any> {
     return await new Promise((resolve, reject) => {
       axios.get(`${ecoURL}/cancelOrder`, {
         params: {

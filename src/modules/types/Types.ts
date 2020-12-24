@@ -5,7 +5,7 @@ import { EntityUser, ConfigAuth } from './../interfaces/Interfaces'
 
 type CreditAmount = string | number
 type PaymentEntity = string | EntityUser
-type AuthEntity = EntityUser
+type SvidType = 'user' | 'group' | 'item'
 type GroupMember = string | EntityUser
 type AuthConfig = ConfigAuth
 type District = 'Voopmont' | 'New Yam' | 'San Vooperisco' | 'Medievala' | 'Landing Cove' | 'New Spudland' | 'Vooperia City' | 'Corgi' | 'Old Yam' | 'New Vooperis' | 'The Netherlands' | 'Queensland' | 'Servers Past' | 'Los Vooperis' | 'Old King Peninsula'
@@ -16,7 +16,7 @@ type QueueType = 'BUY' | 'SELL'
 export {
   CreditAmount,
   PaymentEntity,
-  AuthEntity,
+  SvidType,
   GroupMember,
   AuthConfig,
   District,
