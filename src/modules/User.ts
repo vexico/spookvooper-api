@@ -110,6 +110,22 @@ class User {
     })
   }
 
+  public async getDaysSinceLastMove (): Promise<any> {
+    return await new Promise((resolve, reject) => {
+      axios.get(`${userURL}/getDaysSinceLastMove`, {
+        params: {
+          svid: this.accountid
+        }
+      })
+        .then((response) => {
+          resolve(response.data)
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
+  }
+
   public async sendCredits (amount: CreditAmount, to: PaymentEntity, reason: string): Promise<any> {
     if (typeof to === 'string') {
       return await new Promise((resolve, reject) => {

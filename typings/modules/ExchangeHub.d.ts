@@ -1,16 +1,16 @@
-import { Observable } from 'rxjs'
-import { AuthEntity, QueueType } from './types/Types'
+import { QueueType } from './types/Types'
+import { EntityUser } from './interfaces/Interfaces'
 declare class ExchangeHub {
   private readonly connection
-  onOffer: Observable<unknown>
-  onOfferCancel: Observable<unknown>
-  onTradeEvent: Observable<unknown>
-  onMessage: Observable<unknown>
-  onMessageHistory: Observable<unknown>
+  onOffer: any
+  onOfferCancel: any
+  onTradeEvent: any
+  onMessage: any
+  onMessageHistory: any
   constructor ();
   private readonly start
   private readonly onClosed
-  sendChatMessage (message: string, accountid: string, auth: AuthEntity, ticker: string, tradeState: QueueType): Promise<any>;
+  sendChatMessage (message: string, accountid: string, auth: EntityUser, ticker: string, tradeState: QueueType): Promise<any>;
   getMessageHistory (): Promise<any>;
 }
 export default ExchangeHub

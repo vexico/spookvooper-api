@@ -32,6 +32,21 @@ class TransactionHub {
       this.fromAccount = this.val.FromAccount
       this.toAccount = this.val.ToAccount
 
+      if (this.fromAccount.startsWith('u-')) {
+        this.fromType = 'user'
+      } else if (this.fromAccount.startsWith('g-')) {
+        this.fromType = 'group'
+      } else {
+        this.fromType = 'Error'
+      }
+      if (this.toAccount.startsWith('u-')) {
+        this.toType = 'user'
+      } else if (this.toAccount.startsWith('g-')) {
+        this.toType = 'group'
+      } else {
+        this.toType = 'Error'
+      }
+
       observer.next(this.val)
     })
   })
