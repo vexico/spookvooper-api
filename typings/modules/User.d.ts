@@ -1,10 +1,10 @@
 import { CreditAmount, PaymentEntity } from './types/Types'
-import { ConfigUser } from './interfaces/Interfaces'
+import { ConfigUser, ReturnedUser } from './interfaces/Interfaces'
 declare class User {
   private readonly accountid
   private readonly authkey
   constructor (config: ConfigUser);
-  getUser (): Promise<any>;
+  getUser (): Promise<ReturnedUser>;
   getUsername (): Promise<any>;
   getBalance (): Promise<any>;
   hasDiscordRole (role: string): Promise<any>;
