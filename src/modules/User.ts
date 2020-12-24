@@ -3,7 +3,7 @@
 
 import axios from 'axios'
 import { CreditAmount, PaymentEntity } from './types/Types'
-import { ConfigUser } from './interfaces/Interfaces'
+import { ConfigUser, ReturnedUser } from './interfaces/Interfaces'
 
 const userURL = 'https://api.spookvooper.com/user'
 const ecoURL = 'https://api.spookvooper.com/eco'
@@ -29,7 +29,7 @@ class User {
     }
   }
 
-  public async getUser (): Promise<any> {
+  public async getUser (): Promise<ReturnedUser> {
     return await new Promise((resolve, reject) => {
       axios.get(`${userURL}/getUser`, {
         params: {
