@@ -1,6 +1,6 @@
 {
   "name": "@vexico/spookvooperapi",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Easy to use library for the SpookVooper API",
   "main": "dist/main.js",
   "type": "commonjs",
