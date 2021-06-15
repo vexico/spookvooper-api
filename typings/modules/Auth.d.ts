@@ -1,4 +1,5 @@
 import { AuthConfig } from './types/Types'
+
 declare class Auth {
   private readonly appsecret
   private readonly code

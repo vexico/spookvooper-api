@@ -1,7 +1,7 @@
 /* eslint-disable import/first */
 
 // SpookVooper API - src/main.ts
-// Written by Brendan Lane - https://brndnln.dev/
+// Written by Quinn Lane - https://quinnlane.dev/
 
 import User from './modules/User'
 import Group from './modules/Group'
@@ -13,13 +13,6 @@ import TransactionHub from './modules/TransactionHub'
 import * as DepersonalizedUser from './modules/depersonalized/user'
 import * as DepersonalizedGroup from './modules/depersonalized/group'
 
-import * as SvidTool from './modules/tools/SvidTool'
-const Tools = { SvidTool }
-
-import * as Interfaces from './modules/interfaces/Interfaces'
-import * as Types from './modules/types/Types'
-const Dev = { Interfaces, Types }
-
 export {
   User,
   Group,
@@ -28,7 +21,5 @@ export {
   Stock,
   TransactionHub,
   DepersonalizedUser,
-  DepersonalizedGroup,
-  Tools,
-  Dev
+  DepersonalizedGroup
 }

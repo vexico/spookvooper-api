@@ -1,5 +1,6 @@
 import { EntityUser } from './interfaces/Interfaces'
 import { CreditAmount, GroupMember, PaymentEntity } from './types/Types'
+
 declare class Group {
   private readonly accountid
   constructor (svid: string);

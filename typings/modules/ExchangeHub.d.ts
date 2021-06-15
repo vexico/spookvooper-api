@@ -1,5 +1,6 @@
 import { QueueType } from './types/Types'
 import { EntityUser } from './interfaces/Interfaces'
+
 declare class ExchangeHub {
   private readonly connection
   onOffer: any

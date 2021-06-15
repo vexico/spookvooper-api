@@ -1,4 +1,5 @@
 import { QueueType } from './types/Types'
+
 declare class Stock {
   private readonly stockTicker
   get ticker (): string;

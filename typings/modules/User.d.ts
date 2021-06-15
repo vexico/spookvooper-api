@@ -1,5 +1,6 @@
 import { CreditAmount, PaymentEntity } from './types/Types'
 import { ConfigUser, ReturnedUser } from './interfaces/Interfaces'
+
 declare class User {
   private readonly accountid
   private readonly authkey

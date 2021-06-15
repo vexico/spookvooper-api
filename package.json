@@ -1,15 +1,28 @@
 {
   "name": "@vexico/spookvooperapi",
-  "version": "2.0.1",
-  "description": "Easy to use library for the SpookVooper API",
-  "main": "dist/main.js",
-  "type": "commonjs",
+  "version": "2.1.0",
+  "description": "Easy to use library for the SpookVooper API and other APIs that are in direct integration with SVAPI",
+  "exports": {
+    ".": {
+      "import": "./out/esm/main.js",
+      "require": "./out/cjs/main.js"
+    },
+    "./tools": {
+      "import": "./out/esm/tools.js",
+      "require": "./out/cjs/tools.js"
+    },
+    "./dev": {
+      "import": "./out/esm/dev.js",
+      "require": "./out/cjs/dev.js"
+    }
+  },
   "scripts": {
-    "test": "node dist/test.js",
+    "test:cjs": "node out/cjs/test.js",
+    "test:esm": "node out/esm/test.js",
     "setup-dependencies": "npm i",
-    "full-lint": "npx eslint . && npx ts-standard",
+    "full-lint": "npx eslint .; npx ts-standard",
     "lint-style": "npx ts-standard",
-    "build": "npx tsc"
+    "build": "npx tsc --outDir out/cjs --module CommonJS; npx tsc --outDir out/esm --module ESNext"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
@@ -18,6 +31,7 @@
     "type": "git",
     "url": "git+https://github.com/vexico/spookvooper-api.git"
   },
+  "types": "./typings/main.d.ts",
   "keywords": [
     "spookvooper",
     "api",
@@ -25,7 +39,7 @@
     "SVAPI"
   ],
   "author": "Vexi Technologies",
-  "license": "AGPL-3.0-or-later",
+  "license": "BSD-3-Clause",
   "devDependencies": {
     "@types/node": "^14.14.10",
     "@typescript-eslint/eslint-plugin": "^4.9.0",

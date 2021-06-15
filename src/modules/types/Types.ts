@@ -1,7 +1,7 @@
 // SpookVooper API - modules/types/Types.ts
-// Written by Brendan Lane - https://brndnln.dev/
+// Written by Quinn Lane - https://quinnlane.dev/
 
-import { EntityUser, ConfigAuth } from './../interfaces/Interfaces'
+import { ConfigAuth, EntityUser } from '../interfaces/Interfaces'
 
 type CreditAmount = string | number
 type PaymentEntity = string | EntityUser

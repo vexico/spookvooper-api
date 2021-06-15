@@ -1,5 +1,5 @@
 // SpookVooper API - modules/District.ts
-// Written by Brendan Lane - https://brndnln.dev/
+// Written by Quinn Lane - https://quinnlane.dev/
 
 import axios from 'axios'
 import { District as DistrictType, DistrictWealthType, SenatorDistrict } from './types/Types'

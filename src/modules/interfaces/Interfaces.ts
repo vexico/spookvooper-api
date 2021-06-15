@@ -1,5 +1,5 @@
 // SpookVooper API - modules/interfaces/Interfaces.ts
-// Written by Brendan Lane - https://brndnln.dev/
+// Written by Quinn Lane - https://quinnlane.dev/
 
 import { CreditAmount, DistrictWealthType, PaymentEntity, SenatorDistrict } from '../types/Types'
 

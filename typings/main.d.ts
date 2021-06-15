@@ -6,6 +6,7 @@ import Stock from './modules/Stock'
 import TransactionHub from './modules/TransactionHub'
 import * as DepersonalizedUser from './modules/depersonalized/user'
 import * as DepersonalizedGroup from './modules/depersonalized/group'
+
 declare const Tools: {
   SvidTool: any
 }

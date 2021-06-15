@@ -1,5 +1,5 @@
 // SpookVooper API - modules/Group.ts
-// Written by Brendan Lane - https://brndnln.dev/
+// Written by Quinn Lane - https://quinnlane.dev/
 
 import axios from 'axios'
 import { EntityUser } from './interfaces/Interfaces'

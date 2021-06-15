@@ -1,4 +1,5 @@
-import { EntityUser, ConfigAuth } from './../interfaces/Interfaces'
+import { ConfigAuth, EntityUser } from '../interfaces/Interfaces'
+
 declare type CreditAmount = string | number
 declare type PaymentEntity = string | EntityUser
 declare type SvidType = 'user' | 'group' | 'item'

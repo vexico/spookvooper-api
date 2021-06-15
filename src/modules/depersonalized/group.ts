@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 
 // SpookVooper API - modules/depersonalized/group.ts
-// Written by Brendan Lane - https://brndnln.dev/
+// Written by Quinn Lane - https://quinnlane.dev/
 
 import axios from 'axios'
 

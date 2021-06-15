@@ -1,4 +1,5 @@
 import { Observable } from 'rxjs'
+
 declare class TransactionHub {
   private readonly connection
   private readonly val

@@ -3,6 +3,7 @@
 
 import axios from 'axios'
 import { QueueType } from './types/Types'
+
 const ecoURL = 'https://api.spookvooper.com/eco'
 
 class Stock {

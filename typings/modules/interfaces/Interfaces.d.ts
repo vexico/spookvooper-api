@@ -1,4 +1,5 @@
 import { DistrictWealthType, SenatorDistrict } from '../types/Types'
+
 interface EntityUser {
   svid: string
   apikey: string

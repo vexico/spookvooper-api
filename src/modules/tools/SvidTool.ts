@@ -1,5 +1,5 @@
 // SpookVooper API - modules/tools/SvidTool.ts
-// Written by Brendan Lane - https://brndnln.dev/
+// Written by Quinn Lane - https://quinnlane.dev/
 
 function svidType (svid: string): string {
   if (svid.startsWith('u-')) {

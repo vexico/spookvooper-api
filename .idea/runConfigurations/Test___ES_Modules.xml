@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Test | ES Modules" type="js.build_tools.npm" folderName="Test">
+    <package-json value="$PROJECT_DIR$/package.json" />
+    <command value="run" />
+    <scripts>
+      <script value="test:esm" />
+    </scripts>
+    <node-interpreter value="$USER_HOME$/.nvm/versions/node/v16.1.0/bin/node" />
+    <envs />
+    <method v="2" />
+  </configuration>
+</component>

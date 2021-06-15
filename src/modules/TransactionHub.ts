@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 
 // SpookVooper API - modules/TransactionHub.ts
-// Written by Brendan Lane - https://brndnln.dev/
+// Written by Quinn Lane - https://quinnlane.dev/
 
 import { Observable } from 'rxjs'
 import { HubConnectionBuilder, LogLevel } from '@microsoft/signalr'
